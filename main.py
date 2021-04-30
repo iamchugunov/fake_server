@@ -1,6 +1,7 @@
 import socket
 import json
 import time
+import plotly.graph_objs as go
 
 
 
@@ -22,12 +23,12 @@ mes["az"] = 0.
 mes["hei"] = 0.
 mes["wind_module"] = 0.
 mes["wind_direction"] = 0.
-mes["bullet_type"] = 2
+mes["bullet_type"] = 3
 mes["temperature"] = 20
 mes["atm_pressure"] = 798
 
 meas = []
-f = open('762_16-15.txt', 'r')
+f = open('82_17-02.txt', 'r')
 for line in f:
 
     a = line.split()
@@ -50,12 +51,6 @@ meas_dict = {}
 meas_dict["meas"] = meas
 
 print(meas_dict)
-
-
-
-
-
-
 
 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -101,6 +96,40 @@ while True:
                 data = json.loads((data.decode()))
                 print(data, "track config")
                 print(time.time() - t0, "время обработки в секундах")
+
+                t = []
+                Vx = []
+                Vh = []
+                V = []
+
+                VrR = []
+
+                for i in range(len(data["points"])):
+                    t.append(data["points"][i]["t"])
+                    Vx.append(data["points"][i]["Vx"])
+                    Vh.append(data["points"][i]["Vy"])
+                    V.append(data["points"][i]["V"])
+                    VrR.append(data["points"][i]["VrR"])
+
+
+                fig = go.Figure()
+
+                fig.add_trace(go.Scatter(x=t, y=V, name=('V')))
+                fig.add_trace(go.Scatter(x=t, y=Vx, name=('Vx')))
+                fig.add_trace(go.Scatter(x=t, y=Vh, name=('Vy')))
+                fig.add_trace(go.Scatter(x=t, y=VrR, name=('VrR')))
+
+                fig.update_layout(legend_orientation="h",
+                                  legend=dict(x=.5, xanchor="center"),
+                                  hovermode='x',
+                                  title_text='Скорости',
+                                  xaxis_title="t, c",
+                                  yaxis_title="v, м")
+
+                fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
+                fig.show(renderer="browser")
+
+
 
 
 
