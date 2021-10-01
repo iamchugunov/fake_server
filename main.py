@@ -2,38 +2,75 @@ import socket
 import json
 import time
 import plotly.graph_objs as go
+import os
 
-
+directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.43.43'
+SERVER = '192.168.43.75'
 ADDR = (SERVER, PORT)
 
 
 mes = {}
-mes["loc_B"] = 56.28861111111111
-mes["loc_L"] = 43.083825000000004
-mes["loc_H"] = 0.
-mes["can_B"] = 56.28884722222222
-mes["can_L"] = 43.083825000000004
-mes["can_H"] = 2.
-mes["alpha"] = 45.
+mes["loc_B"] = 56.289147222222219
+mes["loc_L"] = 43.083797222222223
+mes["loc_H"] = 6.
+mes["can_B"] = 56.289347222222219
+mes["can_L"] = 43.083797222222223
+mes["can_H"] = 5.
+mes["alpha"] = 30.
 mes["az"] = 0.
 mes["hei"] = 0.
 mes["wind_module"] = 0.
 mes["wind_direction"] = 0.
-mes["bullet_type"] = 3
+
+mes["bullet_type"] = 7
+
 mes["temperature"] = 20
 mes["atm_pressure"] = 798
 
-meas = []
-f = open('82_17-02.txt', 'r')
+points = []
+file_name = '152-12_35_new7p'
+f = open(file_name + '.txt', 'r')
+# for line in f:
+# # определить и договориться как именно по строкам считывать файлы с измерениями
+#     a = line.split()
+#     poit = {}
+#     poit["execTime"] = float(a[1])
+#     poit["Beta"] = 0.
+#     poit["sBeta"] = 0.
+#     poit["Epsilon"] = float(a[5])
+#     poit["sEpsilon"] = 0.
+#     poit["R"] = float(a[3])
+#     poit["sR"] = 0.
+#     poit["Vr"] = float(a[4])
+#     poit["sVr"] = 0.
+#     poit["Amp"] = float(a[2])
+#     points.append(poit)
+
+# for line in f:
+# # определить и договориться как именно по строкам считывать файлы с измерениями
+#     a = line.split()
+#     poit = {}
+#     poit["execTime"] = float(a[0])
+#     poit["Beta"] = 0.
+#     poit["sBeta"] = 0.
+#     poit["Epsilon"] = float(a[5])
+#     poit["sEpsilon"] = 0.
+#     poit["R"] = float(a[1])
+#     poit["sR"] = 0.
+#     poit["Vr"] = float(a[2])
+#     poit["sVr"] = 0.
+#     poit["Amp"] = 0
+#     poit["az"] = float(a[4])
+#     points.append(poit)
+
 for line in f:
 
     a = line.split()
     poit = {}
-    poit["execTime_sec"] = float(a[1])
+    poit["execTime"] = float(a[1])
     poit["Beta"] = 0.
     poit["sBeta"] = 0.
     poit["Epsilon"] = float(a[5])
@@ -43,12 +80,12 @@ for line in f:
     poit["Vr"] = float(a[4])
     poit["sVr"] = 0.
     poit["Amp"] = float(a[2])
-    meas.append(poit)
+    points.append(poit)
 
 f.close()
 
 meas_dict = {}
-meas_dict["meas"] = meas
+meas_dict["points"] = points
 
 print(meas_dict)
 
@@ -94,40 +131,14 @@ while True:
 
             if rcv_type == 0x150003:
                 data = json.loads((data.decode()))
-                print(data, "track config")
                 print(time.time() - t0, "время обработки в секундах")
 
-                t = []
-                Vx = []
-                Vh = []
-                V = []
+                with open('result/' + file_name + '.json', "w", encoding="utf-8") as file:
+                    json.dump(data, file)
 
-                VrR = []
-
-                for i in range(len(data["points"])):
-                    t.append(data["points"][i]["t"])
-                    Vx.append(data["points"][i]["Vx"])
-                    Vh.append(data["points"][i]["Vy"])
-                    V.append(data["points"][i]["V"])
-                    VrR.append(data["points"][i]["VrR"])
+                print('Выполнено')
 
 
-                fig = go.Figure()
-
-                fig.add_trace(go.Scatter(x=t, y=V, name=('V')))
-                fig.add_trace(go.Scatter(x=t, y=Vx, name=('Vx')))
-                fig.add_trace(go.Scatter(x=t, y=Vh, name=('Vy')))
-                fig.add_trace(go.Scatter(x=t, y=VrR, name=('VrR')))
-
-                fig.update_layout(legend_orientation="h",
-                                  legend=dict(x=.5, xanchor="center"),
-                                  hovermode='x',
-                                  title_text='Скорости',
-                                  xaxis_title="t, c",
-                                  yaxis_title="v, м")
-
-                fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
-                fig.show(renderer="browser")
 
 
 
