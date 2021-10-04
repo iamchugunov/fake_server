@@ -2,44 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1adca13f-f47e-4a78-a6d0-877a41cd29ed" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/grapfic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/fake_server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/fake_server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-11_55.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12-50.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_21.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_28.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_35.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_35_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-12_35_new7p.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-14-46-1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152-14-46.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152_14-46-47.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152_14-46.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/152_15-14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/545_15-48.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/762_16-15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_16-34.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_16-46.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_16-52.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_17-02.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_17-10-43.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/82_17-10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.rar" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grapfic.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="103" column="58" selection-start-line="103" selection-start-column="58" selection-end-line="103" selection-end-column="58" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1622029170182" expanded="true" signature="2480:2734" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,6 +61,7 @@
     <option name="width" value="1415" />
     <option name="height" value="850" />
   </component>
+  <component name="ProjectId" id="1z05sq8Pd6Vqlq25nWrhAhjHlI4" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -86,8 +81,13 @@
       </pane>
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../yakor_interpolator" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -96,18 +96,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\yakor_chronic\fake_server" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.grapfic">
     <configuration name="grapfic" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -181,6 +169,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -263,8 +252,8 @@
     <entry file="file://$PROJECT_DIR$/venv/data.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa18136.26894/pppp.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa18136.26894/Main.py" />
-    <entry file="file://C:/ActivrReactivFull/ActiveExe.py" />
-    <entry file="file://C:/ActivrReactivFull/Main.py" />
+    <entry file="file://$PROJECT_DIR$/../../../../../../ActivrReactivFull/ActiveExe.py" />
+    <entry file="file://$PROJECT_DIR$/../../../../../../ActivrReactivFull/Main.py" />
     <entry file="file://$PROJECT_DIR$/152-12-50.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
