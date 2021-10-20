@@ -8,7 +8,7 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.43.75'
+SERVER = '192.168.56.1'
 ADDR = (SERVER, PORT)
 
 
@@ -25,14 +25,16 @@ mes["hei"] = 0.
 mes["wind_module"] = 0.
 mes["wind_direction"] = 0.
 
-mes["bullet_type"] = 7
+mes["bullet_type"] = 6
 
 mes["temperature"] = 20
 mes["atm_pressure"] = 798
 
 points = []
-file_name = '152-12_35_new7p'
-f = open(file_name + '.txt', 'r')
+# file_name = '3poi-rszo'
+# f = open('logs/' + file_name + '.txt', 'r')
+
+
 # for line in f:
 # # определить и договориться как именно по строкам считывать файлы с измерениями
 #     a = line.split()
@@ -66,26 +68,33 @@ f = open(file_name + '.txt', 'r')
 #     poit["az"] = float(a[4])
 #     points.append(poit)
 
-for line in f:
+# for line in f:
+#
+#     a = line.split()
+#     poit = {}
+#     poit["execTime"] = float(a[1])
+#     poit["Beta"] = 0.
+#     poit["sBeta"] = 0.
+#     poit["Epsilon"] = float(a[6])
+#     poit["sEpsilon"] = 0.
+#     poit["R"] = float(a[3])
+#     poit["sR"] = 0.
+#     poit["Vr"] = float(a[4])
+#     poit["sVr"] = 0.
+#     poit["Amp"] = float(a[2])
+#     points.append(poit)
+#
+# f.close()
+#
+# meas_dict = {}
+# meas_dict["points"] = points
 
-    a = line.split()
-    poit = {}
-    poit["execTime"] = float(a[1])
-    poit["Beta"] = 0.
-    poit["sBeta"] = 0.
-    poit["Epsilon"] = float(a[5])
-    poit["sEpsilon"] = 0.
-    poit["R"] = float(a[3])
-    poit["sR"] = 0.
-    poit["Vr"] = float(a[4])
-    poit["sVr"] = 0.
-    poit["Amp"] = float(a[2])
-    points.append(poit)
-
-f.close()
+file_name = 'trackdata'
+with open(file_name + '.json', 'r') as file:
+    data = json.load(file)
 
 meas_dict = {}
-meas_dict["points"] = points
+meas_dict["points"] = data["points"]
 
 print(meas_dict)
 

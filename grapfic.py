@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 directory_folder = os.getcwd()
 
 # здесь указать название json файла с данными
-file_name = '152-12_35_new7p'
+file_name = 'trackdata'
 
 with open('result/' + file_name + '.json', 'r') as file:
     data = json.load(file)
@@ -107,5 +107,5 @@ fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
 
 # вывести в браузер или созранить
 #fig.show(renderer="browser")
-fig.write_html('result/' + file_name + '.html')
+fig.write_html('result/0' + file_name + '.html')
 # добавлять в название
