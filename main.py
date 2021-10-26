@@ -8,7 +8,7 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.56.1'
+SERVER = '192.168.0.35'
 ADDR = (SERVER, PORT)
 
 
@@ -31,8 +31,8 @@ mes["temperature"] = 20
 mes["atm_pressure"] = 798
 
 points = []
-# file_name = '3poi-rszo'
-# f = open('logs/' + file_name + '.txt', 'r')
+file_name = '152-14-46-1'
+f = open(file_name + '.txt', 'r')
 
 
 # for line in f:
@@ -84,10 +84,10 @@ points = []
 #     poit["Amp"] = float(a[2])
 #     points.append(poit)
 #
-# f.close()
-#
-# meas_dict = {}
-# meas_dict["points"] = points
+f.close()
+
+meas_dict = {}
+meas_dict["points"] = points
 
 file_name = 'trackdata'
 with open(file_name + '.json', 'r') as file:
