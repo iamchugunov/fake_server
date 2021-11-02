@@ -8,27 +8,27 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.0.41'
+SERVER = '192.168.0.13'
 ADDR = (SERVER, PORT)
 
 
 mes = {}
-mes["loc_B"] = 56.289129987823138
-mes["loc_L"] = 43.083811358857844
-mes["loc_H"] = 100.
-mes["can_B"] = 56.289346655128973
-mes["can_L"] = 43.083764980421819
-mes["can_H"] = 98
-mes["alpha"] = 5.
+mes["loc_B"] = 56.289000000000001
+mes["loc_L"] = 43.073333333333331
+mes["loc_H"] = 103.
+mes["can_B"] = 56.289277777777777
+mes["can_L"] = 43.073333333333331
+mes["can_H"] = 103.8
+mes["alpha"] = 25.
 mes["az"] = 0.
 mes["hei"] = 0.
 mes["wind_module"] = 0.
 mes["wind_direction"] = 0.
 
-mes["bullet_type"] = 2
+mes["bullet_type"] = 6
 
 mes["temperature"] = 20
-mes["atm_pressure"] = 798
+mes["atm_pressure"] = 760
 
 points = []
 file_name = '152-14-46-1'
@@ -89,7 +89,7 @@ f.close()
 meas_dict = {}
 meas_dict["points"] = points
 
-file_name = 'trackdata_bullet'
+file_name = 'trackdata_new'
 with open(file_name + '.json', 'r') as file:
     data = json.load(file)
 
