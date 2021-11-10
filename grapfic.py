@@ -7,7 +7,7 @@ from plotly.subplots import make_subplots
 directory_folder = os.getcwd()
 
 # здесь указать название json файла с данными
-file_name = 'trackdata_bullet'
+file_name = 'trackdata_762'
 
 with open('result/' + file_name + '.json', 'r') as file:
     data = json.load(file)

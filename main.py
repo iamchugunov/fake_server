@@ -8,27 +8,26 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.0.13'
+SERVER = '192.168.1.8'
 ADDR = (SERVER, PORT)
 
 
 mes = {}
-mes["loc_B"] = 56.289000000000001
-mes["loc_L"] = 43.073333333333331
-mes["loc_H"] = 103.
-mes["can_B"] = 56.289277777777777
-mes["can_L"] = 43.073333333333331
-mes["can_H"] = 103.8
-mes["alpha"] = 25.
+mes["loc_B"] = 56.28913
+mes["loc_L"] = 43.083811400000002
+mes["loc_H"] = 100.
+mes["can_B"] = 56.289346700000003
+mes["can_L"] = 43.083765
+mes["can_H"] = 98.
+mes["alpha"] = 5.
 mes["az"] = 0.
 mes["hei"] = 0.
-mes["wind_module"] = 0.
-mes["wind_direction"] = 0.
+mes["wind_module"] = 240.
+mes["wind_direction"] = 2.
+mes["bullet_type"] = 2
 
-mes["bullet_type"] = 6
-
-mes["temperature"] = 20
-mes["atm_pressure"] = 760
+mes["temperature"] = 5
+mes["atm_pressure"] = 752
 
 points = []
 file_name = '152-14-46-1'
@@ -89,7 +88,7 @@ f.close()
 meas_dict = {}
 meas_dict["points"] = points
 
-file_name = 'trackdata_new'
+file_name = 'trackdata_762'
 with open(file_name + '.json', 'r') as file:
     data = json.load(file)
 
@@ -146,6 +145,16 @@ while True:
                     json.dump(data, file)
 
                 print('Выполнено')
+
+            if rcv_type == 0x150004:
+                data = json.loads((data.decode()))
+                print(time.time() - t0, "время обработки в секундах")
+
+                with open('result/' + file_name + '.json', "w", encoding="utf-8") as file:
+                    json.dump(data, file)
+
+                print('Выполнено c ошибкой')
+
 
 
 
