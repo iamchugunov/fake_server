@@ -8,7 +8,7 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.1.8'
+SERVER = '192.168.1.5'
 ADDR = (SERVER, PORT)
 
 
@@ -19,19 +19,19 @@ mes["loc_H"] = 100.
 mes["can_B"] = 56.289346700000003
 mes["can_L"] = 43.083765
 mes["can_H"] = 98.
-mes["alpha"] = 5.
+mes["alpha"] = 25
 mes["az"] = 0.
 mes["hei"] = 0.
-mes["wind_module"] = 240.
+mes["wind_module"] = 270.
 mes["wind_direction"] = 2.
-mes["bullet_type"] = 2
+mes["bullet_type"] = 1
 
-mes["temperature"] = 5
-mes["atm_pressure"] = 752
+mes["temperature"] = 20
+mes["atm_pressure"] = 758
 
 points = []
-file_name = '152-14-46-1'
-f = open(file_name + '.txt', 'r')
+# file_name = '152-14-46-1'
+# f = open(file_name + '.txt', 'r')
 
 
 # for line in f:
@@ -83,12 +83,12 @@ f = open(file_name + '.txt', 'r')
 #     poit["Amp"] = float(a[2])
 #     points.append(poit)
 #
-f.close()
+# f.close()
 
 meas_dict = {}
 meas_dict["points"] = points
 
-file_name = 'trackdata_762'
+file_name = 'new_logs/trackdata_long'
 with open(file_name + '.json', 'r') as file:
     data = json.load(file)
 
@@ -147,6 +147,15 @@ while True:
                 print('Выполнено')
 
             if rcv_type == 0x150004:
+                data = json.loads((data.decode()))
+                print(time.time() - t0, "время обработки в секундах")
+
+                with open('result/' + file_name + 'meas.json', "w", encoding="utf-8") as file:
+                    json.dump(data, file)
+
+                print('Выполнено')
+
+            if rcv_type == 0x150005:
                 data = json.loads((data.decode()))
                 print(time.time() - t0, "время обработки в секундах")
 
