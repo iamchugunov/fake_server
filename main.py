@@ -8,32 +8,32 @@ directory_folder = os.getcwd()
 
 HEADER = 64
 PORT = 5050
-SERVER = '192.168.1.5'
+SERVER = '10.3.168.135'
 ADDR = (SERVER, PORT)
 
 
 mes = {}
-mes["loc_B"] = 56.28913
-mes["loc_L"] = 43.083811400000002
-mes["loc_H"] = 100.
-mes["can_B"] = 56.289346700000003
-mes["can_L"] = 43.083765
-mes["can_H"] = 98.
-mes["alpha"] = 25
-mes["az"] = 0.
+mes["loc_B"] = 56.28914
+mes["loc_L"] = 43.08382
+mes["loc_H"] = 103
+mes["can_B"] = 56.289428
+mes["can_L"] = 43.083783
+mes["can_H"] = 100.6724
+mes["alpha"] = 76.5
+mes["az"] = 11.76
 mes["hei"] = 0.
-mes["wind_module"] = 270.
-mes["wind_direction"] = 2.
-mes["bullet_type"] = 1
+mes["wind_module"] = 4.
+mes["wind_direction"] = 206.
+mes["bullet_type"] = 3
 
-mes["temperature"] = 20
-mes["atm_pressure"] = 758
+mes["temperature"] = 5
+mes["atm_pressure"] = 761
 
-points = []
-# file_name = '152-14-46-1'
+# points = []
+# file_name = '152_15-14'
 # f = open(file_name + '.txt', 'r')
-
-
+#
+#
 # for line in f:
 # # определить и договориться как именно по строкам считывать файлы с измерениями
 #     a = line.split()
@@ -84,16 +84,18 @@ points = []
 #     points.append(poit)
 #
 # f.close()
+#
+# meas_dict = {}
+# meas_dict["points"] = points
 
-meas_dict = {}
-meas_dict["points"] = points
+# file_name = 'new_logs/trackdata_long'
 
-file_name = 'new_logs/trackdata_long'
+file_name = 'new_logs/trackdata_mina'
 with open(file_name + '.json', 'r') as file:
     data = json.load(file)
 
 meas_dict = {}
-meas_dict["points"] = data["points"]
+meas_dict["points"] = data["points"][12:]
 
 print(meas_dict)
 

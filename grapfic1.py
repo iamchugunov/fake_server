@@ -10,7 +10,8 @@ import os
 
 directory_folder = os.getcwd()
 
-file_name = 'new_logs/trackdata_long'
+#file_name = 'new_logs/trackdata11'
+file_name = 'new_logs/trackdata_mina'
 
 with open(file_name + '.json', 'r') as file:
     data = json.load(file)
@@ -41,7 +42,7 @@ text.append(E)
 
 t = np.array(t)
 R = np.array(R)
-Vr = abs(np.array(Vr))
+Vr = -(np.array(Vr))
 E = np.array(E)
 
 trace_R = go.Scatter(x=t, y=R, name='расстояние измерения', mode='markers')
@@ -56,10 +57,11 @@ fig.add_trace(trace_E, row=3, col=1)
 
 fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
 
-fig.write_html('result/new_logs/trackdata_long_meas.html')
+fig.write_html('result/new_logs/mina.html')
 
 # здесь указать название json файла с данными
-file_name = 'new_logs/trackdata_long'
+#file_name = 'new_logs/trackdata11'
+file_name = 'new_logs/trackdata_mina'
 
 with open('result/' + file_name + '.json', 'r') as file:
     data = json.load(file)
@@ -69,58 +71,56 @@ with open('result/' + file_name + '.json', 'r') as file:
 t = []
 x = []
 y = []
-V = []
+
 Vx = []
 Vy = []
-A = []
+
 Ax = []
 Ay = []
-C = []
-alpha = []
+
+
 dR = []
 VrR = []
 EvR = []
-AzR = []
+
 
 for i in range(len(data["points"])):
-    t.append(data["points"][i]["t"])
-    x.append(data["points"][i]["x"])
-    y.append(data["points"][i]["y"])
-    V.append(data["points"][i]["V"])
-    Vx.append(data["points"][i]["Vx"])
-    Vy.append(data["points"][i]["Vy"])
-    A.append(data["points"][i]["A"])
-    Ax.append(data["points"][i]["Ax"])
-    Ay.append(data["points"][i]["Ay"])
-    C.append(data["points"][i]["C"])
-    alpha.append(data["points"][i]["alpha"])
-    dR.append(data["points"][i]["DistanceR"])
-    VrR.append(data["points"][i]["VrR"])
-    EvR.append(data["points"][i]["EvR"])
-    AzR.append(data["points"][i]["AzR"])
+    t.append(data["points"][str(i)]["t"])
+    x.append(data["points"][str(i)]["x"])
+    y.append(data["points"][str(i)]["y"])
+
+    Vx.append(data["points"][str(i)]["Vx"])
+    Vy.append(data["points"][str(i)]["Vy"])
+
+    Ax.append(data["points"][str(i)]["Ax"])
+    Ay.append(data["points"][str(i)]["Ay"])
+
+    dR.append(data["points"][str(i)]["DistanceR"])
+    VrR.append(data["points"][str(i)]["VrR"])
+    EvR.append(np.rad2deg(data["points"][str(i)]["EvR"]))
 
 trace_trajectory = go.Scatter(x=x, y=y, name='траектория', mode='markers')
 
 trace_dR = go.Scatter(x=t, y=dR, name='дальность от локатора', mode='markers')
 trace_EvR = go.Scatter(x=t, y=EvR, name='угол места относительно локатора', mode='markers')
-trace_alpha = go.Scatter(x=t, y=alpha, name='alpha', mode='markers')
+
 trace_VrR = go.Scatter(x=t, y=VrR, name='радиальная скорость относительно локатора', mode='markers')
 
-trace_V = go.Scatter(x=t, y=V, name='модуль скорости', mode='markers')
-trace_Vx = go.Scatter(x=t, y=Vx, name='составляющая по x')
-trace_Vy = go.Scatter(x=t, y=Vy, name='составляющая по y')
 
-trace_A = go.Scatter(x=t, y=A, name='модуль ускорения', mode='markers')
-trace_Ax = go.Scatter(x=t, y=Ax, name='составляющая по x')
-trace_Ay = go.Scatter(x=t, y=Ay, name='составляющая по y')
+trace_Vx = go.Scatter(x=t, y=Vx, name='скорость составляющая по x')
+trace_Vy = go.Scatter(x=t, y=Vy, name='скорость составляющая по y')
+
+
+trace_Ax = go.Scatter(x=t, y=Ax, name='ускорение составляющая по x')
+trace_Ay = go.Scatter(x=t, y=Ay, name='ускорение составляющая по y')
 data1 = [trace_trajectory]
 data2 = [trace_R, trace_dR]
 data3 = [trace_Vr, trace_VrR]
 
-data4 = [trace_E, trace_EvR, trace_alpha]
+data4 = [trace_E, trace_EvR]
 
-data5 = [trace_V, trace_Vx, trace_Vy]
-data6 = [trace_A, trace_Ax, trace_Ay]
+data5 = [ trace_Vx, trace_Vy]
+data6 = [trace_Ax, trace_Ay]
 
 fig = make_subplots(rows=6, cols=1)
 
@@ -142,7 +142,21 @@ for x in data6:
 
 
 
+
+
+
+# fig = make_subplots(rows=2, cols=1)
+# for x in data5:
+#     fig.add_trace(x,row=1, col=1)
+# for x in data6:
+#     fig.add_trace(x, row=2, col=1)
+
+
 fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
 
-fig.write_html('result/new_logs/trackresult_long_reeedr_0.html')
+fig.write_html('result/new_logs/trackdata_mina_res.html')
+#
+# fig.update_traces(hoverinfo="all", hovertemplate="x: %{x}<br>y: %{y}")
+#
+# fig.write_html('result/new_logs/trackresult_long_dr_0.html')
 
